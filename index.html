@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+</head>
+
+<body>
+
+    <div class="container nav">
+        <div><a style="color:#fff; font-size:20px;" onclick="previous();">&#171;</a>
+            <span style="color:#fff; font-size:30px;" id="displayYear" onclick="current()"></span>
+            <a style="color:#fff; font-size:20px;" onclick="next();">&#187;</a>
+        </div>
+    </div>
+    <table id="calendar" style="height:100%; width:100%;">
+        <thead>
+            <tr>
+                <th class="dayOfWeek"><span style='font-size:30px;color:#fff;'>&#9959;</span> </th>
+                <th class="dayOfWeek">Su</th>
+                <th class="dayOfWeek">M</th>
+                <th class="dayOfWeek">T</th>
+                <th class="dayOfWeek">W</th>
+                <th class="dayOfWeek">Th</th>
+                <th class="dayOfWeek">F</th>
+                <th class="dayOfWeek">S</th>
+                <th class="dayOfWeek">Su</th>
+                <th class="dayOfWeek">M</th>
+                <th class="dayOfWeek">T</th>
+                <th class="dayOfWeek">W</th>
+                <th class="dayOfWeek">Th</th>
+                <th class="dayOfWeek">F</th>
+                <th class="dayOfWeek">S</th>
+                <th class="dayOfWeek">Su</th>
+                <th class="dayOfWeek">M</th>
+                <th class="dayOfWeek">T</th>
+                <th class="dayOfWeek">W</th>
+                <th class="dayOfWeek">Th</th>
+                <th class="dayOfWeek">F</th>
+                <th class="dayOfWeek">S</th>
+                <th class="dayOfWeek">Su</th>
+                <th class="dayOfWeek">M</th>
+                <th class="dayOfWeek">T</th>
+                <th class="dayOfWeek">W</th>
+                <th class="dayOfWeek">Th</th>
+                <th class="dayOfWeek">F</th>
+                <th class="dayOfWeek">S</th>
+                <th class="dayOfWeek">Su</th>
+                <th class="dayOfWeek">M</th>
+                <th class="dayOfWeek">T</th>
+                <th class="dayOfWeek">W</th>
+                <th class="dayOfWeek">Th</th>
+                <th class="dayOfWeek">F</th>
+                <th class="dayOfWeek">S</th>
+                <th class="dayOfWeek">Su</th>
+                <th class="dayOfWeek">M</th>
+            </tr>
+        </thead>
+
+        <tbody id="calendar-body">
+
+        </tbody>
+    </table>
+
+
+
+
+    <div id="dateModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modalHeading  clearfix">
+
+                <div class="tab">
+                    <button class="tablinks" onclick="ShowSection(event, 'tasks')" id="defaultOpen">tasks</button>
+                    <button class="tablinks" onclick="ShowSection(event, 'journal')">journal</button>
+                    <button class="tablinks" onclick="ShowSection(event, 'settings')">settings</button>
+                </div>
+            </div>
+
+            <input type="hidden" name="saveDate" id="saveDate" />
+
+            <div id="tasks" class="tabcontent">
+                <div class="container">
+                    <section class="taskList" style="background-color:rgb(17, 17, 17);color:#fff;">
+                        <h2 class="dailyTasks">Daily Tasks</h2>
+
+                        <ul class="task_list" id="taskEntry">
+                        </ul>
+                        <form>
+                            <input type="text" placeholder="add item" class="task_txt" maxlength="45"/>
+                            <button class="btn_submit">ADD</button>
+                        </form>
+                    </section>
+                    <section class="taskList">
+                        <h2 id="modalDate" class="modalDate"></h2>
+
+                        <div class="flex-container" style="text-align:center; width:100%; position:relative; top:90%;">
+                            <div class="weatherContainer"></div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="journal" class="tabcontent">
+                <div class="container">
+                    <section class="journal">
+                        <h2 class="dailyJournal">Daily Journal</h2>
+                        <form style="position:relative; top:85%;">
+                            <input type="text" id="journalEntry" placeholder="start writing..."
+                                style="font-size:1.75em;" />
+                            <p class="wordCount">word count: <span id="wordCount"></span></p>
+                        </form>
+                        <div id="journalValue"></div>
+
+                    </section>
+                </div>
+            </div>
+
+            <div id="settings" class="tabcontent">
+                <div class="container">
+                    <section class="settings">
+                       <div class="colorsSection">
+                        <div>
+                            <input type="color" id="backgroundColor" name="background">    
+                            <label for="background">Background</label>
+                        </div>
+
+                        <div>
+                            <input type="color" id="daysHeaderColor" name="daysHeaderColor" value="">
+                            <label for="daysHeaderColor">Days</label>
+                        </div>
+
+                        <div>
+                            <input type="color" id="monthsColor" name="monthsColor" value="">
+                            <label for="monthsColor">Months</label>
+                        </div>
+                    </div>
+                    <div class="consoleSection">
+                        <div>
+                            <input type="checkbox" id="displayConsole" name="displayConsole" checked>
+                            <label for="displayConsole">Display Console</label>
+                        </div>
+                    </div>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+
+    <p class="logListHeader">console.log</p>
+    <ul id="htmlConsole" class="logList">
+        
+    </ul>
+
+    <script src="./scripts/localforage.min.js"></script>
+    <script src="./scripts/console.js"></script>
+  
+    <script src="./scripts/tasks.js"></script>
+    <script src="./scripts/journal.js"></script>
+    <script src="./scripts/app.js"></script>
+   
+    
+
+
+</body>
+
+</html>
